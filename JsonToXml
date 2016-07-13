@@ -13,7 +13,7 @@ import org.json.*;
 public class FirstCombine {
 	public static void main(String[] args) throws IOException {
 
-		File f = new File("資料夾路徑"); // 讀取這個資料夾
+		File f = new File("路徑/hour=00"); // 讀取這個資料夾
 		ArrayList<String> fileList = new ArrayList<String>(); // 宣告一個動態陣列為String的型態，目的是用來儲存檔名
 		if (f.isDirectory()) // 如果f讀到的是資料夾，就會執行
 		{
@@ -27,7 +27,6 @@ public class FirstCombine {
 				if (s[i].equals(".DS_Store")) {
 				} else
 					fileList.add(s[i]);
-
 			}
 		}
 		for (int i = 0; i < fileList.size(); i++) {
@@ -37,7 +36,7 @@ public class FirstCombine {
 			// 讀JSON檔案需要在第一筆資料加"["，在最後一筆資料加上"]"，資料跟資料間要加上"."
 
 			FileReader fr = new FileReader(
-					"/Users/martinhsieh/LAB/year=2016/month=06/day=16/hour=00/" + fileList.get(i));// 讀取檔案的位置
+					"/路徑/hour=00/" + fileList.get(i));// 讀取檔案的位置
 			JSONArray jsona = new JSONArray(new JSONTokener(fr));
 
 			// 一個XML一筆資料
@@ -49,7 +48,7 @@ public class FirstCombine {
 				System.out.println(XML.toString(json));// 印出XML結果
 
 				BufferedWriter bw = new BufferedWriter(
-						new FileWriter("/Users/martinhsieh/Desktop/year=2016/month=06/day=16/hour=00/" + fileList.get(i) + "_" + j + ".xml", true));// 存檔案
+						new FileWriter("/路徑/hour=00/" + fileList.get(i) + "_" + j + ".xml", true));// 存檔案
 				bw.write(String.valueOf(XML.toString(json)));
 				bw.close();
 
@@ -57,7 +56,7 @@ public class FirstCombine {
 
 			// 一個XML多筆資料
 			// BufferedWriter bw = new BufferedWriter(
-			// new FileWriter("/Users/martinhsieh/Desktop/00"+".xml", true));//
+			// new FileWriter("/路徑/00"+".xml", true));//
 			// 存檔案
 			// bw.write(String.valueOf(XML.toString(jsona)));
 			// bw.close();
